@@ -14,6 +14,7 @@
 		EF072E6A23140DE20048652A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF072E6923140DE20048652A /* MainViewController.swift */; };
 		EF072E7023140E940048652A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF072E6F23140E940048652A /* APIController.swift */; };
 		EF40157D23159D2700F68A0D /* OnbaordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40157C23159D2700F68A0D /* OnbaordViewController.swift */; };
+		EF40157F2315AF8700F68A0D /* SinglePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */; };
 		EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */; };
 		EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930662315994F00E89D37 /* AppearanceHelper.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		EF072E6923140DE20048652A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF072E6F23140E940048652A /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		EF40157C23159D2700F68A0D /* OnbaordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnbaordViewController.swift; path = GuessWho/ViewControllers/OnbaordViewController.swift; sourceTree = SOURCE_ROOT; };
+		EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SinglePlayerViewController.swift; path = GuessWho/ViewControllers/SinglePlayerViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterBirdAnimation.swift; sourceTree = "<group>"; };
 		EF9930662315994F00E89D37 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppearanceHelper.swift; path = GuessWho/ViewControllers/AppearanceHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				EF072E6923140DE20048652A /* MainViewController.swift */,
 				EF40157C23159D2700F68A0D /* OnbaordViewController.swift */,
 				EF9930662315994F00E89D37 /* AppearanceHelper.swift */,
+				EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */,
 				EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */,
 			);
 			path = ViewControllers;
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF40157F2315AF8700F68A0D /* SinglePlayerViewController.swift in Sources */,
 				EF40157D23159D2700F68A0D /* OnbaordViewController.swift in Sources */,
 				EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */,
 				EF072E432314094A0048652A /* AppDelegate.swift in Sources */,
