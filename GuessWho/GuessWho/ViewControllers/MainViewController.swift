@@ -10,8 +10,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet var mainView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.layer.cornerRadius = 15
+        mainView.layer.borderWidth = 4
+        mainView.layer.borderColor = AppearanceHelper.bergonia.cgColor
         setupBackground()
     }
     

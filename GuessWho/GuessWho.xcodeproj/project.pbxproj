@@ -14,6 +14,7 @@
 		EF072E6A23140DE20048652A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF072E6923140DE20048652A /* MainViewController.swift */; };
 		EF072E7023140E940048652A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF072E6F23140E940048652A /* APIController.swift */; };
 		EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */; };
+		EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930662315994F00E89D37 /* AppearanceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EF072E6923140DE20048652A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF072E6F23140E940048652A /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterBirdAnimation.swift; sourceTree = "<group>"; };
+		EF9930662315994F00E89D37 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppearanceHelper.swift; path = GuessWho/ViewControllers/AppearanceHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				EF072E6923140DE20048652A /* MainViewController.swift */,
+				EF9930662315994F00E89D37 /* AppearanceHelper.swift */,
 				EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */,
 			);
 			path = ViewControllers;
@@ -176,6 +179,7 @@
 				EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */,
 				EF072E432314094A0048652A /* AppDelegate.swift in Sources */,
 				EF072E7023140E940048652A /* APIController.swift in Sources */,
+				EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */,
 				EF072E6A23140DE20048652A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
