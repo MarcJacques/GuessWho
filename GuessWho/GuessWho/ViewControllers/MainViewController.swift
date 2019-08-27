@@ -14,10 +14,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackground()
         mainView.layer.cornerRadius = 15
         mainView.layer.borderWidth = 4
         mainView.layer.borderColor = AppearanceHelper.bergonia.cgColor
-        setupBackground()
     }
     
     func setupBackground() {
@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         twitterBird.twitterImage = UIImage(named: "twitterBird")
         twitterBird.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(twitterBird)
+        view.sendSubviewToBack(twitterBird)
         NSLayoutConstraint.activate([twitterBird.leadingAnchor.constraint(equalTo: view.leadingAnchor),twitterBird.trailingAnchor.constraint(equalTo: view.trailingAnchor),twitterBird.topAnchor.constraint(equalTo: view.topAnchor), twitterBird.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
     
