@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import CoreData
+
+class APIController {
+    
+    
+    func getTweet(completion@escaping: (Result<Tweet, NetworkErro>) -> Void) {
+        
+    }
+}
