@@ -13,8 +13,10 @@ class OnbaordViewController: UIViewController {
     @IBOutlet var iGotItButton: UIButton!
     @IBOutlet var instructionsView: UIView!
     @IBOutlet var mainView: UIView!
+    @IBOutlet var instructionsLabel: UILabel!
     
     @IBOutlet var gamePlayScreenShot: UIImageView!
+    var buttonCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,19 @@ class OnbaordViewController: UIViewController {
         instructionsView.layer.shadowOffset = .zero
         instructionsView.layer.shadowOpacity = 1
         instructionsView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        iGotItButton.layer.borderWidth = 4
+        iGotItButton.layer.cornerRadius = 10
+        iGotItButton.layer.shadowRadius = 10
+        iGotItButton.layer.shadowOffset = .zero
+        iGotItButton.layer.shadowOpacity = 1
+        iGotItButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        iGotItButton.layer.borderColor = AppearanceHelper.sunny.cgColor
+        iGotItButton.setTitle("I Got It!", for: .normal)
+        iGotItButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        iGotItButton.backgroundColor = AppearanceHelper.bergonia
+        
+        
     }
     
     func setupBackground() {
@@ -50,7 +65,15 @@ class OnbaordViewController: UIViewController {
     }
     */
     @IBAction func iGotItButtonTapped(_ sender: UIButton) {
-        
+        buttonCounter += 1
+        switch buttonCounter {
+        case 1:
+            instructionsLabel.text = "Every Correct Answer Will Get You that much closer to the next level!"
+        case 2:
+            instructionsLabel.text = "You Only Have Three Lives!"
+            iGotItButton.setTitle("Get Started!", for: .normal)
+        default:
+            instructionsLabel.text = "Press The Button Below to Start!"
+        }
     }
-    
 }

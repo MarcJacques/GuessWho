@@ -128,7 +128,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-zQ-4bU">
-                                <rect key="frame" x="74" y="814" width="284" height="48"/>
+                                <rect key="frame" x="56" y="814" width="302" height="48"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <connections>
                                     <action selector="iGotItButtonTapped:" destination="7RM-oh-ipq" eventType="touchUpInside" id="6M4-fc-R2a"/>
                                 </connections>
@@ -138,7 +139,7 @@
                         <constraints>
                             <constraint firstItem="uxo-qj-b3f" firstAttribute="bottom" secondItem="Oky-nr-NuT" secondAttribute="bottom" constant="73" id="Iga-OM-UhZ"/>
                             <constraint firstItem="uxo-qj-b3f" firstAttribute="trailing" secondItem="wdX-zQ-4bU" secondAttribute="trailing" constant="56" id="LJH-JL-efg"/>
-                            <constraint firstItem="wdX-zQ-4bU" firstAttribute="leading" secondItem="uxo-qj-b3f" secondAttribute="leading" constant="74" id="MST-9d-38J"/>
+                            <constraint firstItem="wdX-zQ-4bU" firstAttribute="leading" secondItem="uxo-qj-b3f" secondAttribute="leading" constant="56" id="MST-9d-38J"/>
                             <constraint firstItem="wdX-zQ-4bU" firstAttribute="bottom" secondItem="uxo-qj-b3f" secondAttribute="bottom" id="PRf-Ut-Cnp"/>
                             <constraint firstItem="uxo-qj-b3f" firstAttribute="trailing" secondItem="Oky-nr-NuT" secondAttribute="trailing" constant="40" id="Xx0-2W-vnz"/>
                             <constraint firstItem="Oky-nr-NuT" firstAttribute="leading" secondItem="uxo-qj-b3f" secondAttribute="leading" constant="40" id="Y99-ux-a3X"/>
@@ -150,6 +151,7 @@
                     <connections>
                         <outlet property="gamePlayScreenShot" destination="217-XY-AQ3" id="mbX-lx-Zmx"/>
                         <outlet property="iGotItButton" destination="wdX-zQ-4bU" id="aKy-J1-rK3"/>
+                        <outlet property="instructionsLabel" destination="grM-tX-vKf" id="w0x-iW-M13"/>
                         <outlet property="instructionsView" destination="7tt-yY-FON" id="c8W-3J-EDG"/>
                         <outlet property="mainView" destination="Oky-nr-NuT" id="vk4-zc-EpW"/>
                     </connections>
