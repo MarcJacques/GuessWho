@@ -16,6 +16,7 @@
 		EF40157D23159D2700F68A0D /* OnbaordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40157C23159D2700F68A0D /* OnbaordViewController.swift */; };
 		EF40157F2315AF8700F68A0D /* SinglePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */; };
 		EF4015812315BE7C00F68A0D /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4015802315BE7C00F68A0D /* LoginSignupViewController.swift */; };
+		EF4015832315DEF500F68A0D /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4015822315DEF500F68A0D /* Tweet.swift */; };
 		EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */; };
 		EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930662315994F00E89D37 /* AppearanceHelper.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		EF40157C23159D2700F68A0D /* OnbaordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnbaordViewController.swift; path = GuessWho/ViewControllers/OnbaordViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SinglePlayerViewController.swift; path = GuessWho/ViewControllers/SinglePlayerViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF4015802315BE7C00F68A0D /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupViewController.swift; path = GuessWho/ViewControllers/LoginSignupViewController.swift; sourceTree = SOURCE_ROOT; };
+		EF4015822315DEF500F68A0D /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = GuessWho/Models/Tweet.swift; sourceTree = SOURCE_ROOT; };
 		EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterBirdAnimation.swift; sourceTree = "<group>"; };
 		EF9930662315994F00E89D37 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppearanceHelper.swift; path = GuessWho/ViewControllers/AppearanceHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 		EF072E6E23140E350048652A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF4015822315DEF500F68A0D /* Tweet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				EF4015812315BE7C00F68A0D /* LoginSignupViewController.swift in Sources */,
 				EF40157F2315AF8700F68A0D /* SinglePlayerViewController.swift in Sources */,
 				EF40157D23159D2700F68A0D /* OnbaordViewController.swift in Sources */,
+				EF4015832315DEF500F68A0D /* Tweet.swift in Sources */,
 				EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */,
 				EF072E432314094A0048652A /* AppDelegate.swift in Sources */,
 				EF072E7023140E940048652A /* APIController.swift in Sources */,

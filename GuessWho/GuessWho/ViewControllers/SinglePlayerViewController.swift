@@ -9,29 +9,57 @@
 import UIKit
 
 class SinglePlayerViewController: UIViewController {
-    @IBOutlet var endGameButton: UIButton!
     
+    @IBOutlet var farLeftHeart: UIImageView!
+    @IBOutlet var middleHeart: UIImageView!
+    @IBOutlet var rightHeart: UIImageView!
+    @IBOutlet var endGameButton: UIButton!
     @IBOutlet var answerButtonOne: UIButton!
-    @IBOutlet var progressBar: UIView!
     @IBOutlet var answerButtonTwo: UIButton!
     @IBOutlet var mainView: UIView!
     @IBOutlet var tweetLabel: UILabel!
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var answerButtonThree: UIButton!
-    
     @IBOutlet var accountButton: UIButton!
-    
     @IBOutlet var levelLabel: UILabel!
+    
+    let apiController = APIController()
+    var buttons: [UIButton] = []
+    var successCounter = 0
+    var failureCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(successCounter)
         setupBackground()
-       
+        setupView()
+        apiController.getTweet { (result) in
+            guard let result = try? result.get() else {return}
+            DispatchQueue.main.async {
+                self.tweetLabel.text = result.statuses[0].text
+            }
+        }
+        buttonGeneration()
+        
+    }
+    
+    func buttonGeneration() {
+        answerButtonOne.setTitle("@\(String(describing: apiController.presidentsNames.randomElement()!))", for: .normal)
+        answerButtonTwo.setTitle("@\(String(describing: apiController.presidentsNames.randomElement()!).capitalized)", for: .normal)
+        answerButtonThree.setTitle("@\(String(describing: apiController.presidentsNames.randomElement()!).capitalized)", for: .normal)
+        buttons.append(answerButtonOne)
+        buttons.append(answerButtonTwo)
+        buttons.append(answerButtonThree)
+       buttons.randomElement()!.setTitle("\(String(describing: apiController.random!))", for: .normal)
+    }
+    
+    
+    
+    func setupView() {
         levelLabel.layer.shadowRadius = 2
         levelLabel.layer.shadowOffset = .zero
         levelLabel.layer.shadowOpacity = 1
         levelLabel.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
         accountButton.layer.borderWidth = 4
         accountButton.layer.cornerRadius = 10
         accountButton.layer.shadowRadius = 2
@@ -40,7 +68,6 @@ class SinglePlayerViewController: UIViewController {
         accountButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         accountButton.layer.borderColor = AppearanceHelper.sunny.cgColor
         accountButton.backgroundColor = AppearanceHelper.bergonia
-        
         endGameButton.layer.borderWidth = 1
         endGameButton.layer.cornerRadius = 10
         endGameButton.layer.shadowRadius = 2
@@ -49,15 +76,10 @@ class SinglePlayerViewController: UIViewController {
         endGameButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         endGameButton.layer.borderColor = AppearanceHelper.sunny.cgColor
         endGameButton.backgroundColor = AppearanceHelper.bergonia
-        
         profileImage.layer.cornerRadius = 15
-        
         mainView.layer.borderColor = AppearanceHelper.bergonia.cgColor
         mainView.layer.cornerRadius = 15
         mainView.layer.borderWidth = 4
-        
-        
-        
         answerButtonOne.layer.borderWidth = 4
         answerButtonOne.layer.cornerRadius = 10
         answerButtonOne.layer.shadowRadius = 2
@@ -66,7 +88,6 @@ class SinglePlayerViewController: UIViewController {
         answerButtonOne.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         answerButtonOne.layer.borderColor = AppearanceHelper.sunny.cgColor
         answerButtonOne.backgroundColor = AppearanceHelper.bergonia
-        
         answerButtonTwo.layer.borderWidth = 4
         answerButtonTwo.layer.cornerRadius = 10
         answerButtonTwo.layer.shadowRadius = 2
@@ -75,7 +96,6 @@ class SinglePlayerViewController: UIViewController {
         answerButtonTwo.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         answerButtonTwo.layer.borderColor = AppearanceHelper.sunny.cgColor
         answerButtonTwo.backgroundColor = AppearanceHelper.bergonia
-        
         answerButtonThree.layer.borderWidth = 4
         answerButtonThree.layer.cornerRadius = 10
         answerButtonThree.layer.shadowRadius = 2
@@ -84,8 +104,6 @@ class SinglePlayerViewController: UIViewController {
         answerButtonThree.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         answerButtonThree.layer.borderColor = AppearanceHelper.sunny.cgColor
         answerButtonThree.backgroundColor = AppearanceHelper.bergonia
-        
-        
     }
     
     
@@ -109,4 +127,101 @@ class SinglePlayerViewController: UIViewController {
      }
      */
     
+    
+
+    @IBAction func answerButtonOneTapped(_ sender: UIButton) {
+        
+         guard let randomString = apiController.random else {return}
+        print(randomString)
+        if (answerButtonOne.currentTitle?.contains(randomString))! && successCounter < 3 {
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+            successCounter += 1
+            print(successCounter)
+        } else if successCounter == 3 {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+           
+        }  else if successCounter == 6 {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 3"
+        } else {
+            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            wrongAnswerAlertController.addAction(okAction)
+            present(wrongAnswerAlertController, animated: true, completion: nil)
+            failureCounter += 1
+        }
+    }
+
+    @IBAction func answerButtonTwo(_ sender: UIButton) {
+        
+        guard let randomString = apiController.random else {return}
+
+        if (answerButtonTwo.currentTitle?.contains(randomString))! && successCounter < 3 {
+            print("@\(String(describing: apiController.random))")
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+            successCounter += 1
+            print(successCounter)
+        } else if successCounter == 3 {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+        } else if successCounter == 6 {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 3"
+        } else {
+            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            wrongAnswerAlertController.addAction(okAction)
+            present(wrongAnswerAlertController, animated: true, completion: nil)
+            failureCounter += 1
+        }
+        }
+
+    @IBAction func answerButtonThree(_ sender: UIButton) {
+        guard let randomString = apiController.random else {return}
+        if (answerButtonThree.currentTitle?.contains(randomString))! && successCounter < 3 {
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+            successCounter += 1
+            print(successCounter)
+        } else if successCounter == 3 {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 2"
+        } else if successCounter == 6  {
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 3"
+        } else {
+            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            wrongAnswerAlertController.addAction(okAction)
+            present(wrongAnswerAlertController, animated: true, completion: nil)
+            failureCounter += 1
+            }
+        }
 }
+            
+
