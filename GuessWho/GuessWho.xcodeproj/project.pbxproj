@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C515DE37B980E7FCDFB34E18 /* Pods_GuessWho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B82EEA45CD365E5BF55874 /* Pods_GuessWho.framework */; };
 		EF072E432314094A0048652A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF072E422314094A0048652A /* AppDelegate.swift */; };
 		EF072E482314094A0048652A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF072E462314094A0048652A /* Main.storyboard */; };
 		EF072E4A2314095B0048652A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF072E492314095B0048652A /* Assets.xcassets */; };
@@ -17,11 +18,16 @@
 		EF40157F2315AF8700F68A0D /* SinglePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */; };
 		EF4015812315BE7C00F68A0D /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4015802315BE7C00F68A0D /* LoginSignupViewController.swift */; };
 		EF4015832315DEF500F68A0D /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4015822315DEF500F68A0D /* Tweet.swift */; };
+		EF86869E23170AC300FAD5F3 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */; };
+		EF8686A12317161B00FAD5F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF86869F23170F9E00FAD5F3 /* GoogleService-Info.plist */; };
 		EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */; };
 		EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930662315994F00E89D37 /* AppearanceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48B82EEA45CD365E5BF55874 /* Pods_GuessWho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuessWho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840058BF1E29107FE36CEE66 /* Pods-GuessWho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessWho.release.xcconfig"; path = "Target Support Files/Pods-GuessWho/Pods-GuessWho.release.xcconfig"; sourceTree = "<group>"; };
+		9C727678903C9692DA7504B9 /* Pods-GuessWho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessWho.debug.xcconfig"; path = "Target Support Files/Pods-GuessWho/Pods-GuessWho.debug.xcconfig"; sourceTree = "<group>"; };
 		EF072E3F2314094A0048652A /* GuessWho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessWho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF072E422314094A0048652A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF072E472314094A0048652A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +40,8 @@
 		EF40157E2315AF8700F68A0D /* SinglePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SinglePlayerViewController.swift; path = GuessWho/ViewControllers/SinglePlayerViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF4015802315BE7C00F68A0D /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSignupViewController.swift; path = GuessWho/ViewControllers/LoginSignupViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF4015822315DEF500F68A0D /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = GuessWho/Models/Tweet.swift; sourceTree = SOURCE_ROOT; };
+		EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRepresentation.swift; path = GuessWho/Models/UserRepresentation.swift; sourceTree = SOURCE_ROOT; };
+		EF86869F23170F9E00FAD5F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterBirdAnimation.swift; sourceTree = "<group>"; };
 		EF9930662315994F00E89D37 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppearanceHelper.swift; path = GuessWho/ViewControllers/AppearanceHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -43,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C515DE37B980E7FCDFB34E18 /* Pods_GuessWho.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D17188C53006FDEED6D9187 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48B82EEA45CD365E5BF55874 /* Pods_GuessWho.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB293B2A6A815908ED571C98 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C727678903C9692DA7504B9 /* Pods-GuessWho.debug.xcconfig */,
+				840058BF1E29107FE36CEE66 /* Pods-GuessWho.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EF072E362314094A0048652A = {
 			isa = PBXGroup;
 			children = (
 				EF072E412314094A0048652A /* GuessWho */,
 				EF072E402314094A0048652A /* Products */,
+				CB293B2A6A815908ED571C98 /* Pods */,
+				7D17188C53006FDEED6D9187 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +103,7 @@
 				EF072E6523140D680048652A /* StoryBoards */,
 				EF072E492314095B0048652A /* Assets.xcassets */,
 				EF072E4B2314095B0048652A /* LaunchScreen.storyboard */,
+				EF86869F23170F9E00FAD5F3 /* GoogleService-Info.plist */,
 				EF072E4E2314095B0048652A /* Info.plist */,
 			);
 			path = GuessWho;
@@ -113,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EF072E6F23140E940048652A /* APIController.swift */,
+				EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -124,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF072E512314095B0048652A /* Build configuration list for PBXNativeTarget "GuessWho" */;
 			buildPhases = (
+				59B0904BF7F27191F73DCE18 /* [CP] Check Pods Manifest.lock */,
 				EF072E3B2314094A0048652A /* Sources */,
 				EF072E3C2314094A0048652A /* Frameworks */,
 				EF072E3D2314094A0048652A /* Resources */,
+				0312606CF328DC85D1369896 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -175,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8686A12317161B00FAD5F3 /* GoogleService-Info.plist in Resources */,
 				EF072E4D2314095B0048652A /* LaunchScreen.storyboard in Resources */,
 				EF072E4A2314095B0048652A /* Assets.xcassets in Resources */,
 				EF072E482314094A0048652A /* Main.storyboard in Resources */,
@@ -182,6 +215,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0312606CF328DC85D1369896 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GuessWho/Pods-GuessWho-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GuessWho/Pods-GuessWho-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GuessWho/Pods-GuessWho-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59B0904BF7F27191F73DCE18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GuessWho-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF072E3B2314094A0048652A /* Sources */ = {
@@ -195,6 +270,7 @@
 				EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */,
 				EF072E432314094A0048652A /* AppDelegate.swift in Sources */,
 				EF072E7023140E940048652A /* APIController.swift in Sources */,
+				EF86869E23170AC300FAD5F3 /* UserRepresentation.swift in Sources */,
 				EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */,
 				EF072E6A23140DE20048652A /* MainViewController.swift in Sources */,
 			);
@@ -340,6 +416,7 @@
 		};
 		EF072E522314095B0048652A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C727678903C9692DA7504B9 /* Pods-GuessWho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,6 +435,7 @@
 		};
 		EF072E532314095B0048652A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 840058BF1E29107FE36CEE66 /* Pods-GuessWho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

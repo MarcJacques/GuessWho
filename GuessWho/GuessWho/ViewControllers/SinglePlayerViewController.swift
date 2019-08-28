@@ -40,8 +40,10 @@ class SinglePlayerViewController: UIViewController {
             }
         }
         buttonGeneration()
+            
+        }
         
-    }
+    
     
     func buttonGeneration() {
         answerButtonOne.setTitle("@\(String(describing: apiController.presidentsNames.randomElement()!))", for: .normal)
@@ -405,9 +407,5 @@ class SinglePlayerViewController: UIViewController {
             break
         }
     }
-    
-    
-    
 }
-            
 
