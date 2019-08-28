@@ -106,45 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588660156.065565"
+            timestampString = "588711159.029302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "answerButtonTwo(_:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "answerButtonOneTapped(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GuessWho.SinglePlayerViewController.answerButtonTwo(__C.UIButton) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588656912.923993"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "337">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GuessWho.SinglePlayerViewController.answerButtonTwo(__C.UIButton) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588656912.927128"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "2282">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588660156.066456"
+            timestampString = "588711159.0297641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "answerButtonOneTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,45 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588660156.067065"
+            timestampString = "588711159.0301059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "answerButtonThree(_:)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "answerButtonOneTapped(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GuessWho.SinglePlayerViewController.answerButtonThree(__C.UIButton) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588656912.933784"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "270">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GuessWho.SinglePlayerViewController.answerButtonThree(__C.UIButton) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588656912.935696"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "1590">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

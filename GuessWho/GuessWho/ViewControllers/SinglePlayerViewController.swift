@@ -52,9 +52,7 @@ class SinglePlayerViewController: UIViewController {
         buttons.append(answerButtonThree)
        buttons.randomElement()!.setTitle("\(String(describing: apiController.random!))", for: .normal)
     }
-    
-    
-    
+
     func setupView() {
         levelLabel.layer.shadowRadius = 2
         levelLabel.layer.shadowOffset = .zero
@@ -106,7 +104,6 @@ class SinglePlayerViewController: UIViewController {
         answerButtonThree.backgroundColor = AppearanceHelper.bergonia
     }
     
-    
     func setupBackground() {
         let twitterBird = TwiterBirdView()
         twitterBird.twitterImage = UIImage(named: "twitterBird")
@@ -115,7 +112,6 @@ class SinglePlayerViewController: UIViewController {
         view.sendSubviewToBack(twitterBird)
         NSLayoutConstraint.activate([twitterBird.leadingAnchor.constraint(equalTo: view.leadingAnchor),twitterBird.trailingAnchor.constraint(equalTo: view.trailingAnchor),twitterBird.topAnchor.constraint(equalTo: view.topAnchor), twitterBird.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
-    
     
     /*
      // MARK: - Navigation
@@ -127,10 +123,7 @@ class SinglePlayerViewController: UIViewController {
      }
      */
     
-    
-
     @IBAction func answerButtonOneTapped(_ sender: UIButton) {
-        
          guard let randomString = apiController.random else {return}
         print(randomString)
         if (answerButtonOne.currentTitle?.contains(randomString))! && successCounter < 3 {
@@ -139,89 +132,282 @@ class SinglePlayerViewController: UIViewController {
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
-            print(successCounter)
-        } else if successCounter == 3 {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-           
-        }  else if successCounter == 6 {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-            levelLabel.text = "Level 3"
-        } else {
-            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            wrongAnswerAlertController.addAction(okAction)
-            present(wrongAnswerAlertController, animated: true, completion: nil)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if successCounter >= 3  {
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if successCounter >= 6{
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        }   else if successCounter >= 9 {
+                correctAnswer(successCounter: successCounter)
+            successCounter = 0
+
+        } else if !(answerButtonOne.currentTitle?.contains(randomString))!{
             failureCounter += 1
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if !(answerButtonOne.currentTitle?.contains(randomString))! && failureCounter > 1 && failureCounter < 3{
+            print("Hit the second failure statement")
+            failureCounter += 1
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if !(answerButtonOne.currentTitle?.contains(randomString))! && failureCounter == 3 {
+            print("Hit the third failure statement")
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
         }
     }
+    
 
     @IBAction func answerButtonTwo(_ sender: UIButton) {
-        
         guard let randomString = apiController.random else {return}
-
+        print(randomString)
         if (answerButtonTwo.currentTitle?.contains(randomString))! && successCounter < 3 {
-            print("@\(String(describing: apiController.random))")
             let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
-            print(successCounter)
-        } else if successCounter == 3 {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-        } else if successCounter == 6 {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-            levelLabel.text = "Level 3"
-        } else {
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+            
+        } else if successCounter >= 3  {
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if successCounter >= 6{
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        }   else if successCounter >= 9 {
+            correctAnswer(successCounter: successCounter)
+            successCounter = 0
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+            
+        } else if failureCounter > 0 && failureCounter < 3 {
             let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             wrongAnswerAlertController.addAction(okAction)
             present(wrongAnswerAlertController, animated: true, completion: nil)
             failureCounter += 1
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if failureCounter == 3 {
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
         }
-        }
-
+    }
     @IBAction func answerButtonThree(_ sender: UIButton) {
         guard let randomString = apiController.random else {return}
+        print(randomString)
         if (answerButtonThree.currentTitle?.contains(randomString))! && successCounter < 3 {
             let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
-            print(successCounter)
-        } else if successCounter == 3 {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-            levelLabel.text = "Level 2"
-        } else if successCounter == 6  {
-            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nextLevelAlertController.addAction(okAction)
-            present(nextLevelAlertController, animated: true, completion: nil)
-            levelLabel.text = "Level 3"
-        } else {
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if successCounter >= 3  {
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if successCounter >= 6{
+            correctAnswer(successCounter: successCounter)
+            successCounter += 1
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        }   else if successCounter >= 9 {
+            correctAnswer(successCounter: successCounter)
+            successCounter = 0
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+            
+        } else if failureCounter > 0 && failureCounter < 3 {
             let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             wrongAnswerAlertController.addAction(okAction)
             present(wrongAnswerAlertController, animated: true, completion: nil)
             failureCounter += 1
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
+            }
+        } else if failureCounter == 3 {
+            wrongAnswer(failureCounter: failureCounter)
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                }
             }
         }
+        }
+    
+    func correctAnswer(successCounter: Int) {
+        switch successCounter {
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 2!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+             levelLabel.text = "Level 2"
+        case 4:
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+        case 5:
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+        case 6:
+            let nextLevelAlertController = UIAlertController(title: "Congrats!", message: "Onto Level 3!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nextLevelAlertController.addAction(okAction)
+            present(nextLevelAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 3"
+        case 7:
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+        case 8:
+            let progressAlertController = UIAlertController(title: "Correct!", message: "Keep Going", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            progressAlertController.addAction(okAction)
+            present(progressAlertController, animated: true, completion: nil)
+        case 9:
+            let finishAlertController = UIAlertController(title: "Congrats!", message: "You Finished the Game!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            finishAlertController.addAction(okAction)
+            present(finishAlertController, animated: true, completion: nil)
+        default:
+            break
+        }
+        
+    }
+    
+    func wrongAnswer(failureCounter: Int) {
+        
+        switch failureCounter{
+        case 0:
+        rightHeart.image = UIImage(named: "Component 2")
+        middleHeart.image = UIImage(named: "Component 2")
+        farLeftHeart.image = UIImage(named: "Component 2")
+        case 1:
+            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            wrongAnswerAlertController.addAction(okAction)
+            present(wrongAnswerAlertController, animated: true, completion: nil)
+            rightHeart.image = UIImage(named: "heart-outline (1)")
+        case 2:
+            let wrongAnswerAlertController = UIAlertController(title: "Wrong!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            wrongAnswerAlertController.addAction(okAction)
+            present(wrongAnswerAlertController, animated: true, completion: nil)
+         middleHeart.image = UIImage(named: "heart-outline (1)")
+        case 3:
+            farLeftHeart.image = UIImage(named: "heart-outline (1)")
+            let failAlertController = UIAlertController(title: "Your Out Of Lives!", message: "Try Again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            failAlertController.addAction(okAction)
+            present(failAlertController, animated: true, completion: nil)
+            levelLabel.text = "Level 1"
+        default:
+            break
+        }
+    }
+    
+    
+    
 }
             
 
