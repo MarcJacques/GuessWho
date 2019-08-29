@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="NLZ-mh-LXh">
             <objects>
-                <viewController id="kUh-Zs-16l" customClass="MainViewController" customModule="GuessWho" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="kUh-Zs-16l" customClass="MainViewController" customModule="GuessWho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ny6-Hi-LOX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,7 +336,7 @@
                                 </segments>
                                 <color key="tintColor" red="1" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="loginStateChanged:" destination="Qgl-FP-fPZ" eventType="valueChanged" id="Zgn-j5-I4x"/>
+                                    <action selector="loginSignUpStateChanged:" destination="Qgl-FP-fPZ" eventType="valueChanged" id="Yp3-Mk-5Av"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oVg-mS-pNG">

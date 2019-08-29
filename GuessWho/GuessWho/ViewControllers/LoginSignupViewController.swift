@@ -25,6 +25,7 @@ class LoginSignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signupLoginButton.setTitle("Sign Up", for: .normal)
         signupLoginButton.layer.borderWidth = 4
         signupLoginButton.layer.cornerRadius = 10
         signupLoginButton.layer.shadowRadius = 2
@@ -53,7 +54,7 @@ class LoginSignupViewController: UIViewController {
         guard let email = userNameTextField.text, let password = passwordTextField.text else {return}
         
         if loginType == .signUp {
-            Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 if let error = error {
                     print("Error occured during signup: \(error)")
                 } else {
@@ -69,6 +70,32 @@ class LoginSignupViewController: UIViewController {
                     }
                 }
             }
-}
-}
+        }
+        else if loginType == .signIn {
+            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+                if let error = error {
+                    NSLog("Error Signing In: \(error)")
+                } else if let user = user {
+                    print(user.credential as Any)
+                    DispatchQueue.main.async {
+                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
+                        self.present(mainView!, animated: true, completion: nil)
+                        guard let userID = Auth.auth().currentUser?.uid else {return}
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func loginSignUpStateChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            loginType = LoginType.signUp
+            signupLoginButton.setTitle("Sign Up", for: .normal)
+        } else if sender.selectedSegmentIndex == 1 {
+            loginType = LoginType.signIn
+            signupLoginButton.setTitle("Sign In", for: .normal)
+        }
+    }
+    
 }

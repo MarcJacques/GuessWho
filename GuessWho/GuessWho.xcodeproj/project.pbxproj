@@ -20,6 +20,7 @@
 		EF4015832315DEF500F68A0D /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4015822315DEF500F68A0D /* Tweet.swift */; };
 		EF86869E23170AC300FAD5F3 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */; };
 		EF8686A12317161B00FAD5F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF86869F23170F9E00FAD5F3 /* GoogleService-Info.plist */; };
+		EF8686A423174FB400FAD5F3 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF8686A223174FB400FAD5F3 /* User.xcdatamodeld */; };
 		EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */; };
 		EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9930662315994F00E89D37 /* AppearanceHelper.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		EF4015822315DEF500F68A0D /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = GuessWho/Models/Tweet.swift; sourceTree = SOURCE_ROOT; };
 		EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRepresentation.swift; path = GuessWho/Models/UserRepresentation.swift; sourceTree = SOURCE_ROOT; };
 		EF86869F23170F9E00FAD5F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF8686A323174FB400FAD5F3 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		EF9930642315835F00E89D37 /* TwitterBirdAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterBirdAnimation.swift; sourceTree = "<group>"; };
 		EF9930662315994F00E89D37 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppearanceHelper.swift; path = GuessWho/ViewControllers/AppearanceHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -143,6 +145,7 @@
 			children = (
 				EF072E6F23140E940048652A /* APIController.swift */,
 				EF86869D23170AC300FAD5F3 /* UserRepresentation.swift */,
+				EF8686A223174FB400FAD5F3 /* User.xcdatamodeld */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				EF9930652315835F00E89D37 /* TwitterBirdAnimation.swift in Sources */,
 				EF072E432314094A0048652A /* AppDelegate.swift in Sources */,
 				EF072E7023140E940048652A /* APIController.swift in Sources */,
+				EF8686A423174FB400FAD5F3 /* User.xcdatamodeld in Sources */,
 				EF86869E23170AC300FAD5F3 /* UserRepresentation.swift in Sources */,
 				EF9930672315994F00E89D37 /* AppearanceHelper.swift in Sources */,
 				EF072E6A23140DE20048652A /* MainViewController.swift in Sources */,
@@ -474,6 +478,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EF8686A223174FB400FAD5F3 /* User.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF8686A323174FB400FAD5F3 /* User.xcdatamodel */,
+			);
+			currentVersion = EF8686A323174FB400FAD5F3 /* User.xcdatamodel */;
+			name = User.xcdatamodeld;
+			path = ../Models/User.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EF072E372314094A0048652A /* Project object */;
 }

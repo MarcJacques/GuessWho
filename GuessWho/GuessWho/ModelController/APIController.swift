@@ -56,31 +56,5 @@ class APIController {
             }.resume()
     }
     
-    func testFireBase(email: String, password: String, completion: @escaping (Error?) -> Void) {
-        //gonna need a uuid locally made for the appending path component and get one from auuth
-        let id = UUID().uuidString
-       var requestURL = fireBaseURL.appendingPathComponent(id)
-        requestURL.appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "PUT"
-        let userRep = UserRepresentation(id: id, email: email, password: password)
-        let jsonEncoder = JSONEncoder()
-        do {
-         let encodedUser =  try jsonEncoder.encode(userRep)
-            request.httpBody = encodedUser
-        } catch {
-            NSLog("DOnt work")
-        }
-        
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-                completion(error)
-                return
-            }
-            completion(nil)
-        }.resume()
-        
-    }
     
 }
