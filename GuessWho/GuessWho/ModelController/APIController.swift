@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Firebase
 
 
 enum NetworkError: Error {
@@ -22,10 +23,48 @@ enum NetworkError: Error {
 class APIController {
 
     let fireBaseURL = URL(string: "https://guesswho-f0f0c.firebaseio.com/")!
+    
     var presidentsNames: [String] = ["realDonaldTrump", "KamalaHarris", "CoryBooker", "JoeBiden", "marwilliamson", "AndrewYang", "ewarren", "JulianCastro","TulsiGabbard", ]
     var random: String?
-
+    var userRepresentation: [UserRepresentation] = []
     
+    init() {
+        guard let id = Auth.auth().currentUser?.uid else {return}
+        Database.database().reference().child("users").child(id).observe(.value, with: { (snapshot) in
+            print(snapshot)
+        }, withCancel: nil)
+    }
+    
+    func createUser(id: String, email: String, password: String) {
+        let user = User(id: id, email: email, password: password, highscore: nil, context: CoreDataStack.shared.mainContext)
+        saveToCoreData()
+        putUser(user: user)
+    }
+    
+    //update changes in core data
+    func updateUser(user: User, highscore: Int16) {
+        user.highscore = highscore
+    }
+    //sync server -> fetch user objects from server match that with current user uid
+
+    //
+    
+    
+    func saveToCoreData() {
+        let moc = CoreDataStack.shared.mainContext
+        do {
+            try moc.save()
+        } catch {
+            NSLog("Error saving moc: \(error)")
+            moc.reset()
+        }
+    }
+    
+}
+
+extension APIController {
+    
+    ///twitter API
     func getTweet(completion: @escaping(Result<Tweet, NetworkError>) -> Void) {
         let randomElement = "@\(String(describing: presidentsNames.randomElement()!))"
         print(randomElement)
@@ -56,5 +95,30 @@ class APIController {
             }.resume()
     }
     
-    
+    func  putUser(user: User, completion: @escaping () -> Void = { }) {
+        guard let id = user.id else {return}
+        let requestURL = fireBaseURL
+            .appendingPathComponent("users")
+            .appendingPathComponent(id)
+            .appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        do {
+            let userData = try JSONEncoder().encode(user.userRepresentation)
+            request.httpBody = userData
+        } catch {
+            NSLog("Error encoding user: \(error)")
+            completion()
+            return
+        }
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                NSLog("Error putting user to server: \(error)")
+                completion()
+                return
+            }
+            try? CoreDataStack.shared.saveContext(context: CoreDataStack.shared.mainContext)
+            completion()
+            }.resume()
+    }
 }

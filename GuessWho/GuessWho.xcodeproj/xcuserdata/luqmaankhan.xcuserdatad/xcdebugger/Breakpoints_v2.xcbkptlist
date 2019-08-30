@@ -6,95 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuessWho/ModelController/APIController.swift"
-            timestampString = "588730119.963838"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getTweet(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuessWho/ModelController/APIController.swift"
-            timestampString = "588730119.963943"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getTweet(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuessWho/ModelController/APIController.swift"
-            timestampString = "588730119.96403"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "getTweet(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GuessWho.APIController.getTweet(completion: (Swift.Result&lt;GuessWho.Tweet, GuessWho.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ModelController/APIController.swift"
-                  timestampString = "588638583.458041"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "1412">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GuessWho.APIController.getTweet(completion: (Swift.Result&lt;GuessWho.Tweet, GuessWho.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GuessWho"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ModelController/APIController.swift"
-                  timestampString = "588638583.461919"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "1326">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588730119.964113"
+            timestampString = "588816476.896937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "answerButtonOneTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -106,7 +26,7 @@
                   moduleName = "GuessWho"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588728804.416504"
+                  timestampString = "588733997.131619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
@@ -121,12 +41,12 @@
                   moduleName = "GuessWho"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luqmaankhan/Desktop/github/GuessWho/GuessWho/GuessWho/ViewControllers/SinglePlayerViewController.swift"
-                  timestampString = "588728804.419605"
+                  timestampString = "588733997.134577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
                   endingLineNumber = "131"
-                  offsetFromSymbolStart = "6270">
+                  offsetFromSymbolStart = "6120">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588730119.964187"
+            timestampString = "588816476.897413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "answerButtonOneTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,28 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuessWho/ViewControllers/SinglePlayerViewController.swift"
-            timestampString = "588730119.964252"
+            timestampString = "588816476.897758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "answerButtonOneTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuessWho/ModelController/APIController.swift"
-            timestampString = "588730119.9643151"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "testFireBase(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

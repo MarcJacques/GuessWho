@@ -21,7 +21,8 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var signupLoginButton: UIButton!
-    var apiController: APIController?
+    
+    let apiController = APIController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,8 @@ class LoginSignupViewController: UIViewController {
                     print("Error occured during signup: \(error)")
                 } else {
                     DispatchQueue.main.async {
+                        guard let id = Auth.auth().currentUser?.uid else {return}
+                        self.apiController.createUser(id: id , email: email, password: password)
                         let alertController = UIAlertController(title: "Sign Up Successful", message: "Now Login!!!!", preferredStyle: .alert)
                         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alertController.addAction(alertAction)
@@ -76,11 +79,9 @@ class LoginSignupViewController: UIViewController {
                 if let error = error {
                     NSLog("Error Signing In: \(error)")
                 } else if let user = user {
-                    print(user.credential as Any)
                     DispatchQueue.main.async {
                         let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
                         self.present(mainView!, animated: true, completion: nil)
-                        guard let userID = Auth.auth().currentUser?.uid else {return}
                     }
                 }
             }

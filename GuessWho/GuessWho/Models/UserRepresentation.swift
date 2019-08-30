@@ -11,6 +11,5 @@ struct UserRepresentation: Codable {
     var id: String
     var email: String?
     var password: String?
-    var highScore: Int?
-    var profileImage: Data?
+    var highScore: Int16?
 }

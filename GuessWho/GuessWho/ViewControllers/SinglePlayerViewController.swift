@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
 
 class SinglePlayerViewController: UIViewController {
+    
     
     @IBOutlet var farLeftHeart: UIImageView!
     @IBOutlet var middleHeart: UIImageView!
@@ -27,6 +30,7 @@ class SinglePlayerViewController: UIViewController {
     var buttons: [UIButton] = []
     var successCounter = 0
     var failureCounter = 0
+    var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +44,29 @@ class SinglePlayerViewController: UIViewController {
             }
         }
         buttonGeneration()
-            
-        }
         
+        if Auth.auth().currentUser == nil {
+            accountButton.setTitle("Guest", for: .normal)
+        } else {
+            guard let id = Auth.auth().currentUser?.uid else {return}
+            fetchUserFromPersistentStore(id: id, context: CoreDataStack.shared.mainContext)
+        }
+    }
     
+    func fetchUserFromPersistentStore(id: String, context: NSManagedObjectContext) -> User? {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        var result: User? = nil
+        context.performAndWait {
+            do {
+                result = try context.fetch(fetchRequest).first
+                accountButton.setTitle("\(String(describing: result!.email!))", for: .normal)
+            } catch {
+                NSLog("Error retrieving from core data: \(error)")
+            }
+        }
+        return result
+    }
     
     func buttonGeneration() {
         answerButtonOne.setTitle("@\(String(describing: apiController.presidentsNames.randomElement()!))", for: .normal)
@@ -406,6 +429,22 @@ class SinglePlayerViewController: UIViewController {
         default:
             break
         }
+    }
+    @IBAction func profileButtonTapped(_ sender: UIButton) {
+        
+        if Auth.auth().currentUser?.uid == nil {
+            let failAlertController = UIAlertController(title: "Sign Up To Access The Profile", message: "Click Okay To Sign Up", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (okAction) in
+                guard let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") else {return}
+                self.present(signUpVC, animated: true, completion: nil)
+                failAlertController.addAction(okAction)
+                self.present(failAlertController, animated: true, completion: nil )
+            }
+
+            
+        }
+        guard let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileView") else {return}
+        present(profileVC, animated: true, completion: nil)
     }
 }
 
