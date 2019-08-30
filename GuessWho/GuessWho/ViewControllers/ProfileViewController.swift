@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController {
             pointsEarnedLabel.text = "To Keep Track Of High Scores and Play Multiplayer Please Sign Up"
         } else {
             guard let id = Auth.auth().currentUser?.uid else {return}
-            fetchUserFromPersistentStore(identifier: id, context: CoreDataStack.shared.mainContext)
+            fetchUserFromPersistentStore(id: id, context: CoreDataStack.shared.mainContext)
         }
         homeButton.layer.borderWidth = 4
         homeButton.layer.cornerRadius = 10
@@ -40,9 +40,9 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func fetchUserFromPersistentStore(identifier: String, context: NSManagedObjectContext) -> User? {
+    func fetchUserFromPersistentStore(id: String, context: NSManagedObjectContext) -> User? {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         var result: User? = nil
         context.performAndWait {
             do {

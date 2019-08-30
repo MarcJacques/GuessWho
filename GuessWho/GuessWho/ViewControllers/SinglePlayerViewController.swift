@@ -31,7 +31,7 @@ class SinglePlayerViewController: UIViewController {
     var successCounter = 0
     var failureCounter = 0
     var users: [User] = []
-    var highScore: Int16?
+    var highScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class SinglePlayerViewController: UIViewController {
             accountButton.setTitle("Guest", for: .normal)
         } else {
             guard let id = Auth.auth().currentUser?.uid else {return}
-            fetchUserFromPersistentStore(id: id, context: CoreDataStack.shared.mainContext)
+            fetchUserFromPersistentStore(id: id, context: CoreDataStack.shared.mainContext)?.highscore = Int16(highScore)
         }
     }
     
@@ -161,6 +161,7 @@ class SinglePlayerViewController: UIViewController {
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -171,6 +172,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 3  {
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -181,6 +183,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 6{
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -243,6 +246,7 @@ class SinglePlayerViewController: UIViewController {
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -254,6 +258,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 3  {
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -264,6 +269,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 6{
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -316,6 +322,7 @@ class SinglePlayerViewController: UIViewController {
             progressAlertController.addAction(okAction)
             present(progressAlertController, animated: true, completion: nil)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -326,6 +333,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 3  {
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
@@ -336,6 +344,7 @@ class SinglePlayerViewController: UIViewController {
         } else if successCounter >= 6{
             correctAnswer(successCounter: successCounter)
             successCounter += 1
+            highScore += 1
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
