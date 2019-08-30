@@ -31,6 +31,7 @@ class SinglePlayerViewController: UIViewController {
     var successCounter = 0
     var failureCounter = 0
     var users: [User] = []
+    var highScore: Int16?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,9 @@ class SinglePlayerViewController: UIViewController {
             fetchUserFromPersistentStore(id: id, context: CoreDataStack.shared.mainContext)
         }
     }
+    
+    
+    
     
     func fetchUserFromPersistentStore(id: String, context: NSManagedObjectContext) -> User? {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
@@ -161,6 +165,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if successCounter >= 3  {
@@ -170,6 +175,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if successCounter >= 6{
@@ -179,12 +185,19 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }   else if successCounter >= 9 {
                 correctAnswer(successCounter: successCounter)
             successCounter = 0
-
+            apiController.getTweet { (result) in
+                guard let result = try? result.get() else {return}
+                DispatchQueue.main.async {
+                    self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
+                }
+            }
         } else if !(answerButtonOne.currentTitle?.contains(randomString))!{
             failureCounter += 1
             wrongAnswer(failureCounter: failureCounter)
@@ -192,6 +205,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if !(answerButtonOne.currentTitle?.contains(randomString))! && failureCounter > 1 && failureCounter < 3{
@@ -202,15 +216,18 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if !(answerButtonOne.currentTitle?.contains(randomString))! && failureCounter == 3 {
+            failureCounter = 0
             print("Hit the third failure statement")
             wrongAnswer(failureCounter: failureCounter)
             apiController.getTweet { (result) in
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }
@@ -230,6 +247,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
             
@@ -240,6 +258,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if successCounter >= 6{
@@ -249,6 +268,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }   else if successCounter >= 9 {
@@ -258,6 +278,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
             
@@ -272,6 +293,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if failureCounter == 3 {
@@ -280,6 +302,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }
@@ -297,6 +320,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if successCounter >= 3  {
@@ -306,6 +330,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if successCounter >= 6{
@@ -315,6 +340,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }   else if successCounter >= 9 {
@@ -324,6 +350,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
             
@@ -338,6 +365,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         } else if failureCounter == 3 {
@@ -346,6 +374,7 @@ class SinglePlayerViewController: UIViewController {
                 guard let result = try? result.get() else {return}
                 DispatchQueue.main.async {
                     self.tweetLabel.text = result.statuses[0].text
+                    self.buttonGeneration()
                 }
             }
         }
@@ -395,7 +424,7 @@ class SinglePlayerViewController: UIViewController {
             finishAlertController.addAction(okAction)
             present(finishAlertController, animated: true, completion: nil)
         default:
-            break
+            self.successCounter = 0
         }
         
     }
@@ -426,8 +455,11 @@ class SinglePlayerViewController: UIViewController {
             failAlertController.addAction(okAction)
             present(failAlertController, animated: true, completion: nil)
             levelLabel.text = "Level 1"
+            rightHeart.image = UIImage(named: "Component 2")
+            middleHeart.image = UIImage(named: "Component 2")
+            farLeftHeart.image = UIImage(named: "Component 2")
         default:
-            break
+            self.failureCounter = 0
         }
     }
     @IBAction func profileButtonTapped(_ sender: UIButton) {

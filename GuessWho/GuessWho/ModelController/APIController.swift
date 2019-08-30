@@ -21,7 +21,7 @@ enum NetworkError: Error {
 }
 
 class APIController {
-
+    
     let fireBaseURL = URL(string: "https://guesswho-f0f0c.firebaseio.com/")!
     
     var presidentsNames: [String] = ["realDonaldTrump", "KamalaHarris", "CoryBooker", "JoeBiden", "marwilliamson", "AndrewYang", "ewarren", "JulianCastro","TulsiGabbard", ]
@@ -38,7 +38,6 @@ class APIController {
     func createUser(id: String, email: String, password: String) {
         let user = User(id: id, email: email, password: password, highscore: nil, context: CoreDataStack.shared.mainContext)
         saveToCoreData()
-        putUser(user: user)
     }
     
     //update changes in core data
@@ -46,7 +45,7 @@ class APIController {
         user.highscore = highscore
     }
     //sync server -> fetch user objects from server match that with current user uid
-
+    
     //
     
     
@@ -95,30 +94,15 @@ extension APIController {
             }.resume()
     }
     
-    func  putUser(user: User, completion: @escaping () -> Void = { }) {
-        guard let id = user.id else {return}
-        let requestURL = fireBaseURL
-            .appendingPathComponent("users")
-            .appendingPathComponent(id)
-            .appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "PUT"
-        do {
-            let userData = try JSONEncoder().encode(user.userRepresentation)
-            request.httpBody = userData
+    func updateHighScore(user: User, highscore: Int16) throws {
+        let backgroundContext = CoreDataStack.shared.container.newBackgroundContext()
+        backgroundContext.performAndWait {
+            do {
+                user.highscore = highscore
+                try CoreDataStack.shared.saveContext(context: backgroundContext)
         } catch {
-            NSLog("Error encoding user: \(error)")
-            completion()
-            return
+            NSLog("Error updating highscore: \(error)")
         }
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
-            if let error = error {
-                NSLog("Error putting user to server: \(error)")
-                completion()
-                return
-            }
-            try? CoreDataStack.shared.saveContext(context: CoreDataStack.shared.mainContext)
-            completion()
-            }.resume()
-    }
+}
+}
 }
